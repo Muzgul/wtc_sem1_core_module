@@ -1,36 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmacdona <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/13 15:52:44 by mmacdona          #+#    #+#             */
-/*   Updated: 2018/06/13 15:52:45 by mmacdona         ###   ########.fr       */
+/*   Created: 2018/06/14 11:47:25 by mmacdona          #+#    #+#             */
+/*   Updated: 2018/06/14 11:47:27 by mmacdona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+char	*ft_strchr(const char *s, int c)
 {
-	unsigned char	*line_d;
-	unsigned char	*line_s;
-	int				i;
+	size_t	i;
 
-	line_d = (unsigned char *)dst;
-	line_s = (unsigned char *)src;
 	i = 0;
-	if (src < dst)
-		i = len - 1;
-	while (i < (int)len && i >= 0)
-	{
-		if (&line_d[i] != &line_s[i])
-			line_d[i] = line_s[i];
-		if (src < dst)
-			i--;
-		else
-			i++;
-	}
-	return (dst);
+	while (s[i] != '\0' && s[i] != (char)c)
+		i++;
+	if (s[i] == (char)c)
+		return ((char *)&s[i]);
+	return (NULL);
 }

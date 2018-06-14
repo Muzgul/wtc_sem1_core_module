@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmacdona <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/13 15:52:44 by mmacdona          #+#    #+#             */
-/*   Updated: 2018/06/13 15:52:45 by mmacdona         ###   ########.fr       */
+/*   Created: 2018/06/14 12:23:44 by mmacdona          #+#    #+#             */
+/*   Updated: 2018/06/14 12:23:45 by mmacdona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int		ft_atoi(const char *str)
 {
-	unsigned char	*line_d;
-	unsigned char	*line_s;
-	int				i;
+	size_t	i;
+	size_t	neg;
+	int		result;
 
-	line_d = (unsigned char *)dst;
-	line_s = (unsigned char *)src;
 	i = 0;
-	if (src < dst)
-		i = len - 1;
-	while (i < (int)len && i >= 0)
+	result = 0;
+	neg = 0;
+	while (str[i] != '\0' && ft_isspace(str[i]))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		if (&line_d[i] != &line_s[i])
-			line_d[i] = line_s[i];
-		if (src < dst)
-			i--;
-		else
-			i++;
+		if (str[i] == '-')
+			neg = 1;
+		i++;
 	}
-	return (dst);
+	while (str[i] != '\0' && ft_isdigit(str[i]) != 0)
+	{
+		result *= 10;
+		result += str[i] - '0';
+		i++;
+	}
+	if (neg)
+		result *= -1;
+	return (result);
 }

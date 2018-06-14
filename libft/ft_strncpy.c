@@ -21,13 +21,11 @@ char	*ft_strncpy(char *dst, const char *src, size_t len)
 	i = 0;
 	while (i < len)
 	{
-		if (i >= src_len)
+		if (i > src_len)
 			dst[i] = '\0';
 		else
 			dst[i] = src[i];
 		i++;
 	}
-	if (len >= src_len)
-		dst[i] = '\0';
 	return (dst);
 }

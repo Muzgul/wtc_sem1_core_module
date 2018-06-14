@@ -16,12 +16,13 @@ char	*ft_strdup(const char *s1)
 {
 	size_t	len;
 	size_t	i;
-	char 	*str_cpy;
+	char	*str_cpy;
 
-	if (s1 == NULL)
-		return (NULL);
 	len = ft_strlen(s1);
 	str_cpy = (char *)malloc(sizeof(char) * (len + 1));
+	if (str_cpy == NULL)
+		return (NULL);
+	i = 0;
 	while (i < len)
 	{
 		str_cpy[i] = s1[i];

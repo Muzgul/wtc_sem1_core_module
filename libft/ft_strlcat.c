@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmacdona <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/13 15:52:44 by mmacdona          #+#    #+#             */
-/*   Updated: 2018/06/13 15:52:45 by mmacdona         ###   ########.fr       */
+/*   Created: 2018/06/14 10:23:53 by mmacdona          #+#    #+#             */
+/*   Updated: 2018/06/14 10:23:54 by mmacdona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	unsigned char	*line_d;
-	unsigned char	*line_s;
-	int				i;
+	size_t	dst_len;
+	size_t	src_len;
+	size_t	i;
 
-	line_d = (unsigned char *)dst;
-	line_s = (unsigned char *)src;
+	dst_len = ft_strlen(dst);
+	src_len = ft_strlen(src);
+	if (dstsize < dst_len)
+		return (src_len + dstsize);
 	i = 0;
-	if (src < dst)
-		i = len - 1;
-	while (i < (int)len && i >= 0)
+	while (src[i] != '\0' && (i + dst_len + 1) < dstsize)
 	{
-		if (&line_d[i] != &line_s[i])
-			line_d[i] = line_s[i];
-		if (src < dst)
-			i--;
-		else
-			i++;
+		dst[i + dst_len] = src[i];
+		i++;
 	}
-	return (dst);
+	dst[i + dst_len] = '\0';
+	return (dst_len + src_len);
 }

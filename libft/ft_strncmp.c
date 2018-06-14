@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmacdona <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/13 15:52:44 by mmacdona          #+#    #+#             */
-/*   Updated: 2018/06/13 15:52:45 by mmacdona         ###   ########.fr       */
+/*   Created: 2018/06/14 12:17:27 by mmacdona          #+#    #+#             */
+/*   Updated: 2018/06/14 12:17:29 by mmacdona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned char	*line_d;
-	unsigned char	*line_s;
-	int				i;
+	unsigned char	*l1;
+	unsigned char	*l2;
+	size_t			i;
 
-	line_d = (unsigned char *)dst;
-	line_s = (unsigned char *)src;
+	l1 = (unsigned char *)s1;
+	l2 = (unsigned char *)s2;
 	i = 0;
-	if (src < dst)
-		i = len - 1;
-	while (i < (int)len && i >= 0)
-	{
-		if (&line_d[i] != &line_s[i])
-			line_d[i] = line_s[i];
-		if (src < dst)
-			i--;
-		else
-			i++;
-	}
-	return (dst);
+	while (l1[i] != '\0' && l2[i] != '\0' && i < n && l1[i] == l2[i])
+		i++;
+	if (l1[i] != l2[i])
+		return (l1[i] - l2[i]);
+	return (0);
 }

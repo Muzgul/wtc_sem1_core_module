@@ -29,7 +29,7 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	if (line_s[i] == (unsigned char)c)
 	{
 		line_d[i] = line_s[i];
-		return (&line_d[i]);
+		return (&line_d[i + 1]);
 	}
 	return (NULL);
 }
