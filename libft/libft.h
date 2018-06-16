@@ -49,10 +49,25 @@ int			ft_tolower(int c);
 int			ft_isspace(int c);
 int			ft_atoi(const char *str);
 
+int			ft_spcbefore(const char *s);
+int			ft_spcafter(const char *s);
+size_t		ft_words(const char *s, char c);
+size_t		ft_wordsize(const char *s, char c);
+
 void		*ft_memalloc(size_t size);
 void		ft_memdel(void **ap);
 char		*ft_strnew(size_t size);
 void		ft_strdel(char **as);
 void		ft_strclr(char *s);
+void		ft_striter(char *s, void (*f)(char *));
+void		ft_striteri(char *s,void (*f)(unsigned int, char *));
+char		*ft_strmap(const char *s, char (*f)(char));
+char		*ft_strmapi(const char *s, char (*f)(unsigned int, char));
+int			ft_strequ(const char *s1, const char *s2);
+int			ft_strnequ(const char *s1, const char *s2, size_t n);
+char		*ft_strsub(const char *s, unsigned int start, size_t len);
+char		*ft_strjoin(const char *s1, const char *s2);
+char		*ft_strtrim(const char *s);
+char		**ft_strsplit(const char *s, char c);
 
 #endif
