@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmacdona <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 13:49:23 by mmacdona          #+#    #+#             */
-/*   Updated: 2018/06/14 13:49:25 by mmacdona         ###   ########.fr       */
+/*   Created: 2018/06/18 12:07:03 by mmacdona          #+#    #+#             */
+/*   Updated: 2018/06/18 12:07:03 by mmacdona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalpha(int c)
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	int		is_up;
-	int		is_low;
+	t_list	*node;
+	t_list	*newlst;
 
-	is_up = ft_isupper(c);
-	is_low = ft_islower(c);
-	if (is_up != 0 || is_low != 0)
-		return (1);
-	return (0);
+	newlst = (*f)(lst);
+	lst = lst->next;
+	node = newlst;
+	while (lst != NULL)
+	{
+		node->next = (*f)(lst);
+		lst = lst->next;
+		node = node->next;
+	}
+	return (newlst);
 }

@@ -20,6 +20,6 @@ int		ft_isalnum(int c)
 	is_a = ft_isalpha(c);
 	is_d = ft_isdigit(c);
 	if (is_a != 0 || is_d != 0)
-		return (c);
+		return (1);
 	return (0);
 }

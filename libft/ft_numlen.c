@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_numlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmacdona <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 13:49:23 by mmacdona          #+#    #+#             */
-/*   Updated: 2018/06/14 13:49:25 by mmacdona         ###   ########.fr       */
+/*   Created: 2018/06/18 09:53:15 by mmacdona          #+#    #+#             */
+/*   Updated: 2018/06/18 09:53:16 by mmacdona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalpha(int c)
+size_t	ft_numlen(int n)
 {
-	int		is_up;
-	int		is_low;
+	size_t		len;
+	size_t		is_neg;
+	long int	temp;
 
-	is_up = ft_isupper(c);
-	is_low = ft_islower(c);
-	if (is_up != 0 || is_low != 0)
+	if (n == 0 || n == -0)
 		return (1);
-	return (0);
+	temp = n;
+	is_neg = 0;
+	if (temp < 0)
+	{
+		is_neg = 1;
+		temp *= -1;
+	}
+	len = 0;
+	while (temp > 0)
+	{
+		temp /= 10;
+		len++;
+	}
+	return (len + is_neg);
 }

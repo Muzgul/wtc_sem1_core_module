@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmacdona <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 13:49:23 by mmacdona          #+#    #+#             */
-/*   Updated: 2018/06/14 13:49:25 by mmacdona         ###   ########.fr       */
+/*   Created: 2018/06/18 17:17:08 by mmacdona          #+#    #+#             */
+/*   Updated: 2018/06/18 17:17:09 by mmacdona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalpha(int c)
+char	*ft_strndup(const char *s, size_t n)
 {
-	int		is_up;
-	int		is_low;
+	size_t	i;
+	char	*str;
 
-	is_up = ft_isupper(c);
-	is_low = ft_islower(c);
-	if (is_up != 0 || is_low != 0)
-		return (1);
-	return (0);
+	i = 0;
+	str = ft_strnew(n);
+	while (i < n)
+	{
+		str[i] = s[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
 }

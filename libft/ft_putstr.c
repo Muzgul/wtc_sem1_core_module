@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmacdona <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/14 13:49:23 by mmacdona          #+#    #+#             */
-/*   Updated: 2018/06/14 13:49:25 by mmacdona         ###   ########.fr       */
+/*   Created: 2018/06/18 10:15:24 by mmacdona          #+#    #+#             */
+/*   Updated: 2018/06/18 10:15:24 by mmacdona         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isalpha(int c)
+void	ft_putstr(const char *s)
 {
-	int		is_up;
-	int		is_low;
+	size_t	i;
 
-	is_up = ft_isupper(c);
-	is_low = ft_islower(c);
-	if (is_up != 0 || is_low != 0)
-		return (1);
-	return (0);
+	if (s == NULL)
+		return ;
+	i = 0;
+	while(s[i] != '\0')
+	{
+		ft_putchar(s[i]);
+		i++;
+	}
 }

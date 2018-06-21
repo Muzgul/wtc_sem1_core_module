@@ -22,7 +22,8 @@ char	**ft_strsplit(const char *s, char c)
 	i = 0;
 	j = 0;
 	words = ft_words(s, c);
-	str_a = (char **)malloc(sizeof(char *) * (words + 1));
+	if (!(str_a = (char **)malloc(sizeof(char *) * (words + 1))))
+		return (NULL);
 	while (s[i] != '\0' && j < words)
 	{
 		if (s[i] != c)

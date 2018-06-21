@@ -19,6 +19,6 @@ void	*ft_memalloc(size_t size)
 	space = (void *)malloc(sizeof(void) * size);
 	if (space == NULL)
 		return (NULL);
-	ft_strclr((char *)space);
+	ft_bzero(space, size);
 	return (space);
 }

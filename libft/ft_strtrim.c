@@ -29,6 +29,8 @@ char	*ft_strtrim(const char *s)
 	if (i == s_len)
 		return (ft_strnew(0));
 	str = ft_strnew(j - i);
+	if (str == NULL)
+		return (NULL);
 	str = ft_strncpy(str, &s[i], j - i);
 	return (str);
 }
